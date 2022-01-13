@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main {
+    margin: 2rem auto;
+    width: 50vw;
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 5rem);
+    grid-template-rows: repeat(6, 3rem);
+    justify-content: center;
+}
+
+.display {
+    border: 1px solid gainsboro;
+    grid-area: 1/1/2/-1;
+}
+
+.equals {
+    grid-area: 6/3/7/-1;
+}
+
+button {
+    border: 1px solid gainsboro;
+    font-size: 1.4rem;
+}
