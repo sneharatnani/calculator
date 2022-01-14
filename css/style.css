@@ -21,11 +21,13 @@ main {
 }
 
 .display {
+    display: flex;
+    flex-direction: row-reverse;
     border: 1px solid gainsboro;
     grid-area: 1/1/2/-1;
 }
 
-.equals {
+#equals {
     grid-area: 6/3/7/-1;
 }
 
