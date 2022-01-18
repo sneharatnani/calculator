@@ -1,99 +1,118 @@
-
+let operators = document.querySelectorAll('.operator');
 let display = document.querySelector('.display');
-let numKey = document.querySelectorAll('.num');
+let numbers = document.querySelectorAll('.num');
 let clear = document.querySelector('.clear');
-let total;
+let equals = document.querySelector('#equals');
+let total = 0;
+let numOne = [];
+// let numTwo = '';
+let operator = [];
+let container = '';
 
 clear.addEventListener('click', restart);
 function restart() {
-    container = '';
+    numOne = '';
     display.textContent = '';
     total = 0;
 }
 
-
-let container = '';
-numKey.forEach((key) => {
-    key.addEventListener('click', () => {
-        container += key.textContent;
+numbers.forEach((num) => {
+    num.addEventListener('click', () => {
+        container += num.textContent;
         display.textContent = container;
-
-        operate();
+        numOne.push(num.textContent);
     });
 });
 
-function operate() {
-    let operators = document.querySelectorAll('.operator');
-    operators.forEach((operator) => {
-        operator.addEventListener('click', calc);
+
+
+operators.forEach((op) => {
+    op.addEventListener('click', () => {
+        /*  if (e.target.textContent !== '=') {
+             operator = e.target.textContent;
+         }
+         else {
+             switch (operator) {
+                 case '+':
+                     operate();
+                     total = '';
+                     console.log(numOne, total);
+                     break;
+             }
+         } */
+        operator.push(op.textContent);
+        numOne.push('new');
+        container = '';
     });
-}
+});
 
-function calc(e) {
-    switch (e.target.id) {
-        /*     case 'addition':
-                total += (+container);
-                console.log(total, container);
-                clearDisplay();
-                break; */
 
-        /*    case 'subtract':
-               subtract();
-               console.log(total, container);
-               clearDisplay();
-               break; */
+function operate() {
 
-        /*    case 'multiply':
-               multiply();
-               console.log(total, container);
-               clearDisplay();
-               break; */
-
-        case 'division':
-            division();
-            console.log(total, container);
-            clearDisplay();
-            break;
-    }
 }
 
 function clearDisplay() {
-    container = '';
+    display.textContent = '';
     // display.textContent = total;
+
 }
 
-function subtract() {
-    if (!total) {
-        total = (+container) - total;
+equals.addEventListener('click', () => {
+    let finalNums = numOne.join('').split('new');
+    total = Number(finalNums.shift());
+    for (let i = 0; i < finalNums.length; i++) {
+        switch (true) {
+            case operator[i] === '+':
+                total += Number(finalNums[i]);
+                break;
+
+            case operator[i] === '-':
+                total -= Number(finalNums[i]);
+                break;
+
+            case operator[i] === '÷':
+                switch (finalNums[i]) {
+                    case '':
+                        total = total
+                        break;
+
+                    default:
+                        total /= Number(finalNums[i]);
+                }
+                break;
+
+            case operator[i] === '×':
+                switch (finalNums[i]) {
+                    case '':
+                        total = total
+                        break;
+
+                    default:
+                        total *= Number(finalNums[i]);
+                }
+                break;
+        }
+
     }
 
-    else if (total === undefined) {
-        total = (+container);
+    console.log(total, operator, numOne);
+});
+/* function show() {
+    if (total === 'Infinity') {
+        display.textContent = 'ERROR';
     }
-
     else {
-        total -= (+container);
-    };
+        display.textContent = total.toFixed(2);
+    }
 }
+ */
 
-function multiply() {
-    if (total === undefined) {
-        total = (+container);
-    }
-    else {
-        total *= (+container);
-    }
-}
 
-function division() {
-    if (total === undefined) {
-        total = (+container);
-    }
-    else {
-        total = +(total / (+container)).toFixed(2);
-        console.log(typeof total);
-    }
-}
+
+
+
+
+
 
 
 
