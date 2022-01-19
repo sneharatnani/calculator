@@ -11,21 +11,27 @@ body {
 }
 
 main {
+    background: whitesmoke;
+    border: 2px solid black;
+    border-radius: 5px;
     margin: 2rem auto;
-    width: 50vw;
+    padding: 10px;
+    width: 26vw;
     gap: 10px;
     display: grid;
     grid-template-columns: repeat(4, 5rem);
-    grid-template-rows: repeat(6, 3rem);
+    grid-template-rows: repeat(6, 4rem);
     justify-content: center;
 }
 
 .display {
+    border-radius: 5px;
+    padding: 15px;
     align-items: center;
-    font-size: 2rem;
+    font-size: 3rem;
     display: flex;
     flex-direction: row-reverse;
-    border: 1px solid gainsboro;
+    border: 1px solid black;
     grid-area: 1/1/2/-1;
 }
 
@@ -33,7 +39,24 @@ main {
     grid-area: 6/3/7/-1;
 }
 
+.clear {
+    grid-area: 2/1/3/3;
+}
+
 button {
-    border: 1px solid gainsboro;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: black;
+    color: #b2ebf2;
+    border: 2px solid transparent;
     font-size: 1.4rem;
+    cursor: pointer;
+}
+
+button.num {
+    color: white;
+}
+
+button:hover {
+    border-color: plum;
 }
