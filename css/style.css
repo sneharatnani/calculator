@@ -38,7 +38,7 @@ main {
 }
 
 #equals {
-    background-color: #75e7b2e8;
+    background-color: turquoise;
     color: white;
     grid-area: 6/3/7/-1;
 }
@@ -60,7 +60,7 @@ button {
 }
 
 button:hover {
-    box-shadow: 1px 1px 2px 2px #80808082;
+    box-shadow: 1px 1px 3px 3px #80808082;
 }
 
 footer {
@@ -73,4 +73,31 @@ footer {
 footer a {
     text-decoration: none;
     color: black;
+}
+
+/* media queries */
+@media screen and (max-width:480px) {
+    main {
+        grid-template-columns: repeat(4, 4rem);
+        grid-template-rows: repeat(6, 3.5rem);
+    }
+
+    .display {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (width:280px) {
+    main {
+        grid-template-columns: repeat(4, 3rem);
+        grid-template-rows: repeat(6, 3rem);
+    }
+
+    .display {
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-size: 1.3rem;
+    }
 }

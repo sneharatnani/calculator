@@ -6,13 +6,12 @@ let numbers = document.querySelectorAll('.num');
 let clear = document.querySelector('.clear');
 let equals = document.querySelector('#equals');
 let total = 0;
-let numOne = [];
+let numContainer = [];
 let operator = [];
 let container = [];
 
-clear.addEventListener('click', restart);
 function restart() {
-    numOne = [];
+    numContainer = [];
     container = [];
     display.textContent = '';
     total = 0;
@@ -23,7 +22,7 @@ function getNumbers(e) {
     if (container.length < 17) {
         container.push(e.target.textContent);
         display.textContent = container.join('');
-        numOne.push(e.target.textContent);
+        numContainer.push(e.target.textContent);
     }
 }
 numbers.forEach((num) => {
@@ -34,31 +33,26 @@ function givePoint() {
     if (!container.includes('.') && container.length < 17) {
         container.push('.');
         display.textContent = container.join('');
-        numOne.push('.');
+        numContainer.push('.');
     }
 }
-point.addEventListener('click', givePoint);
 
-backSpace.addEventListener('click', eraseLast);
 function eraseLast() {
-    console.log(numOne, container);
-    numOne.pop();
+    numContainer.pop();
     container.pop();
     display.textContent = container.join('');
-    console.log(numOne, container);
 }
 
 operators.forEach((op) => {
     op.addEventListener('click', () => {
         operator.push(op.textContent);
-        numOne.push('new');
+        numContainer.push('new');
         container = [];
     });
 });
 
-
 function operate() {
-    let finalNums = numOne.join('').split('new');
+    let finalNums = numContainer.join('').split('new');
     total = Number(finalNums.shift());
     for (let i = 0; i < finalNums.length; i++) {
         switch (true) {
@@ -73,7 +67,7 @@ function operate() {
             case operator[i] === '÷':
                 switch (finalNums[i]) {
                     case '':
-                        total = total
+                        total = total;
                         break;
 
                     default:
@@ -84,7 +78,7 @@ function operate() {
             case operator[i] === '×':
                 switch (finalNums[i]) {
                     case '':
-                        total = total
+                        total = total;
                         break;
 
                     default:
@@ -94,7 +88,6 @@ function operate() {
         }
     }
     showTotal();
-    console.log(total, operator, numOne);
 }
 
 function showTotal() {
@@ -109,8 +102,10 @@ function showTotal() {
     }
 }
 
+clear.addEventListener('click', restart);
+point.addEventListener('click', givePoint);
+backSpace.addEventListener('click', eraseLast);
 equals.addEventListener('click', operate);
-
 
 
 // keyboard support
@@ -120,30 +115,35 @@ document.addEventListener('keydown', (e) => {
     switch (true) {
         case numArr.includes(e.key) && container.length < 17:
             container.push(e.key);
-            numOne.push(e.key);
+            numContainer.push(e.key);
             display.textContent = container.join('');
             break;
 
         case signArr.includes(e.key):
             operator.push(e.key);
             container = [];
-            numOne.push('new');
+            numContainer.push('new');
             break;
 
         case e.key === '/':
             operator.push('÷');
             container = [];
-            numOne.push('new');
+            numContainer.push('new');
             break;
 
         case e.key === '*':
             operator.push('×');
             container = [];
-            numOne.push('new');
+            numContainer.push('new');
             break;
 
         case e.key === '=':
             operate();
+            break;
+
+        case e.key === 'Enter':
+            operate()
+            e.preventDefault()
             break;
 
         case e.key === 'Backspace':
