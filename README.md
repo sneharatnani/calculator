@@ -1,6 +1,6 @@
 # Calculator
 
-A simple JavaScript calculator which will do simple calculations easily. It has click as well as keyboard support. Try is out [here](https://sneharatnani.github.io/calculator/).
+A simple JavaScript calculator which will do basic math calculations easily. It has click as well as keyboard support. Try it out [here](https://sneharatnani.github.io/calculator/).
 
 ## Technologies Used
 
