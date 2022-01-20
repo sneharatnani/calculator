@@ -20,7 +20,7 @@ function restart() {
 }
 
 function getNumbers(e) {
-    if (container.length < 20) {
+    if (container.length < 17) {
         container.push(e.target.textContent);
         display.textContent = container.join('');
         numOne.push(e.target.textContent);
@@ -31,7 +31,7 @@ numbers.forEach((num) => {
 });
 
 function givePoint() {
-    if (!container.includes('.') && container.length < 20) {
+    if (!container.includes('.') && container.length < 17) {
         container.push('.');
         display.textContent = container.join('');
         numOne.push('.');
@@ -118,7 +118,7 @@ document.addEventListener('keydown', (e) => {
     let numArr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     let signArr = ['+', '-',];
     switch (true) {
-        case numArr.includes(e.key) && container.length < 20:
+        case numArr.includes(e.key) && container.length < 17:
             container.push(e.key);
             numOne.push(e.key);
             display.textContent = container.join('');
@@ -151,11 +151,17 @@ document.addEventListener('keydown', (e) => {
             break;
 
         case e.key === '.':
-            givePoint();
+            givePoint()
+            break;
+
+        case e.key === 'Escape':
+            restart()
+            break;
     }
 });
 
-
+let currentYear = new Date().getFullYear();
+document.querySelector('span').textContent = currentYear;
 
 
 

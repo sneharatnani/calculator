@@ -4,19 +4,20 @@
 }
 
 body {
+    font-family: sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     height: 100vh;
 }
 
 main {
-    background: whitesmoke;
+    background: #80808061;
     border: 2px solid black;
     border-radius: 5px;
     margin: 2rem auto;
     padding: 10px;
-    width: 26vw;
     gap: 10px;
     display: grid;
     grid-template-columns: repeat(4, 5rem);
@@ -25,10 +26,11 @@ main {
 }
 
 .display {
+    background-color: white;
     border-radius: 5px;
     padding: 15px;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2.1rem;
     display: flex;
     flex-direction: row-reverse;
     border: 1px solid black;
@@ -36,27 +38,39 @@ main {
 }
 
 #equals {
+    background-color: #75e7b2e8;
+    color: white;
     grid-area: 6/3/7/-1;
 }
 
 .clear {
+    background-color: #ff00007a;
+    color: white;
     grid-area: 2/1/3/3;
 }
 
 button {
     font-weight: bold;
     border-radius: 5px;
-    background-color: black;
-    color: #b2ebf2;
-    border: 2px solid transparent;
-    font-size: 1.4rem;
+    background-color: white;
+    border: 1px solid black;
+
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
-button.num {
-    color: white;
+button:hover {
+    box-shadow: 1px 1px 2px 2px #80808082;
 }
 
-button:hover {
-    border-color: plum;
+footer {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px;
+    background: #c0c0c082;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
 }
